@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rise to Stage – Character Creator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, select {
+      margin-bottom: 10px;
+      width: 220px;
+      padding: 6px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #444;
+    }
+    .stat-input {
+      width: 60px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00bcd4;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0097a7;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 10px;
+      border: 1px solid #333;
+      color: #90ee90;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create Your Character</h1>
+
+  <label>Name:</label>
+  <input type="text" id="name">
+
+  <label>Pronouns:</label>
+  <select id="pronouns">
+    <option value="he/him">He/Him</option>
+    <option value="she/her">She/Her</option>
+    <option value="they/them">They/Them</option>
+  </select>
+
+  <label>Role:</label>
+  <input type="radio" name="role" value="Artist" checked> Artist
+  <input type="radio" name="role" value="Manager"> Manager
+  <input type="radio" name="role" value="Producer"> Producer
+  <input type="radio" name="role" value="Label Exec"> Label Exec
+
+  <label>Genres (Choose 2):</label>
+  <input type="checkbox" name="genre" value="R&B"> R&B
+  <input type="checkbox" name="genre" value="Pop"> Pop
+  <input type="checkbox" name="genre" value="Hip-Hop"> Hip-Hop
+  <input type="checkbox" name="genre" value="EDM"> EDM
+
+  <label>Origin Story:</label>
+  <select id="origin">
+    <option value="Viral Star">Viral Star</option>
+    <option value="Choir Kid">Choir Kid</option>
+    <option value="Battle Rapper">Battle Rapper</option>
+    <option value="College Grad">College Grad</option>
+  </select>
+
+  <label>Hometown:</label>
+  <input type="text" id="hometown">
+
+  <label>Distribute 10 Stat Points:</label>
+  Talent: <input class="stat-input" type="number" id="talent" max="10" min="0"><br>
+  Charisma: <input class="stat-input" type="number" id="charisma" max="10" min="0"><br>
+  Business: <input class="stat-input" type="number" id="business" max="10" min="0"><br>
+  Stamina: <input class="stat-input" type="number" id="stamina" max="10" min="0"><br>
+  Street Influence: <input class="stat-input" type="number" id="influence" max="10" min="0"><br>
+
+  <button onclick="submitCharacter()">Submit Character</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    function submitCharacter() {
+      const genres = [...document.querySelectorAll('input[name="genre"]:checked')].map(cb => cb.value);
+      if (genres.length !== 2) {
+        alert("Please select exactly 2 genres.");
+        return;
+      }
+
+      const stats = ['talent', 'charisma', 'business', 'stamina', 'influence'];
+      let totalPoints = 0;
+      const statValues = {};
+      stats.forEach(stat => {
+        const val = parseInt(document.getElementById(stat).value) || 0;
+        totalPoints += val;
+        statValues[stat] = val;
+      });
+
+      if (totalPoints !== 10) {
+        alert("Please allocate exactly 10 stat points.");
+        return;
+      }
+
+      const output = {
+        name: document.getElementById("name").value,
+        pronouns: document.getElementById("pronouns").value,
+        role: document.querySelector('input[name="role"]:checked').value,
+        genres: genres,
+        origin_story: document.getElementById("origin").value,
+        hometown: document.getElementById("hometown").value,
+        stats: statValues
+      };
+
+      document.getElementById("output").textContent = JSON.stringify(output, null, 2);
+    }
+  </script>
+</body>
+</html>
