@@ -30,14 +30,13 @@
   </style>
 </head>
 <body>
-  <h1>Week 1: Welcome to the Grind</h1>
-  <p>You just landed in LA. Your manager Clyde left a message. Vash sneak-dissed you on a livestream. Nesa’s blog hinted you might be the next big thing—but called your style “inconsistent.”</p>
-  <p>Time to make a move.</p>
+  <h1>Week 1: Make Your Move</h1>
+  <p>This week brings new opportunities and risks. Choose wisely.</p>
 
-  <div class="choice" onclick="showOutcome(1)">🎙 Hit the studio to record your debut single</div>
-  <div class="choice" onclick="showOutcome(2)">📞 Meet with Clyde to plan your next steps</div>
-  <div class="choice" onclick="showOutcome(3)">🎤 Crash an open mic at The Boiler Room</div>
-  <div class="choice" onclick="showOutcome(4)">💻 Respond to Vash online with a surprise freestyle</div>
+  <div class="choice" onclick="showOutcome(1)">🎙 Record a new single</div>
+  <div class="choice" onclick="showOutcome(2)">📞 Meet with Clyde for strategy</div>
+  <div class="choice" onclick="showOutcome(3)">🎤 Perform live at a showcase</div>
+  <div class="choice" onclick="showOutcome(4)">💻 Launch a viral challenge</div>
 
   <div id="outcome" class="outcome" style="display:none;"></div>
 
@@ -48,20 +47,20 @@
 
       switch(choice) {
         case 1:
-          text = "You locked in and cut your first track. Clyde said it’s a ‘sleeper hit.’ You gain +2 Talent.";
+          text = "You crafted a catchy new single. Your followers are hyped. +2 Talent.";
           break;
         case 2:
-          text = "Clyde lays out a 6-month plan. You learn about touring, syncs, and how to dodge bad deals. +2 Business IQ.";
+          text = "Clyde mapped out a 90-day press run. +2 Business IQ.";
           break;
         case 3:
-          text = "You snuck on stage, grabbed the mic, and killed it. Nesa reposted your clip. +2 Charisma.";
+          text = "The crowd loved your set. Nesa featured your name. +2 Charisma.";
           break;
         case 4:
-          text = "You posted a cold response. It caught fire, but some say it’s too early to start beef. +1 Influence, -1 Stamina.";
+          text = "Your dance challenge blew up. Vash took a shot, but you gained clout. +1 Influence.";
           break;
       }
 
-      output.innerHTML = text + '<br><br><a href="week2.html" style="color:#00bcd4;">Continue to Week 2</a>';
+      output.innerHTML = text + '<br><br><a href="week2.html" style="color:#00bcd4;">Next Week</a>';
       output.style.display = 'block';
     }
   </script>

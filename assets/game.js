@@ -1,1 +1,5 @@
-// Core game logic with save/load
+
+// Placeholder for game logic
+function saveGameState() {
+  console.log("Game state saved.");
+}

@@ -1,1 +1,68 @@
-<!-- Week 3 scene with 4 branches -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rise to Stage – Week 3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      margin: 40px;
+    }
+    h1 { color: #00bcd4; }
+    .choice {
+      background-color: #1e1e1e;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #333;
+      cursor: pointer;
+    }
+    .choice:hover {
+      background-color: #2c2c2c;
+    }
+    .outcome {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #2a2a2a;
+      border-left: 4px solid #00bcd4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Week 3: Make Your Move</h1>
+  <p>This week brings new opportunities and risks. Choose wisely.</p>
+
+  <div class="choice" onclick="showOutcome(1)">🎙 Record a new single</div>
+  <div class="choice" onclick="showOutcome(2)">📞 Meet with Clyde for strategy</div>
+  <div class="choice" onclick="showOutcome(3)">🎤 Perform live at a showcase</div>
+  <div class="choice" onclick="showOutcome(4)">💻 Launch a viral challenge</div>
+
+  <div id="outcome" class="outcome" style="display:none;"></div>
+
+  <script>
+    function showOutcome(choice) {
+      const output = document.getElementById('outcome');
+      let text = '';
+
+      switch(choice) {
+        case 1:
+          text = "You crafted a catchy new single. Your followers are hyped. +2 Talent.";
+          break;
+        case 2:
+          text = "Clyde mapped out a 90-day press run. +2 Business IQ.";
+          break;
+        case 3:
+          text = "The crowd loved your set. Nesa featured your name. +2 Charisma.";
+          break;
+        case 4:
+          text = "Your dance challenge blew up. Vash took a shot, but you gained clout. +1 Influence.";
+          break;
+      }
+
+      output.innerHTML = text + '<br><br><a href="week4.html" style="color:#00bcd4;">Next Week</a>';
+      output.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
