@@ -1,1 +1,1 @@
-// Compiled JavaScript bundle
+// Full compiled game logic goes here
